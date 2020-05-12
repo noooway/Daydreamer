@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dreamcatcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.3.0/frappe-gantt.min.js" integrity="sha256-YA6lue6HOUrphxAbwHtvGF84CE76RcfTyBYvlEU3u6U=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.3.0/frappe-gantt.css" integrity="sha256-m2zScNAG4lg2ENuIJ2CStnLf9YK0KMAkuZly2YSz8B0=" crossorigin="anonymous" />
+</head>
+
+<body>
+
+  <section class="main">
+    <div class="container">
+      <div class="gantt-container"
+           style="overflow: scroll;
+                  margin-top: 50px;
+                  margin-left: 10%;
+                  margin-right: 10%">
+        <svg id="gantt"></svg>
+      </div>
+      <div style="display: flex;
+                  justify-content: flex-end;
+                  margin-left: 10%;
+                  margin-right: 10%">
+        <button>New Task</button>
+      </div>
+
+      <div style="margin-top: 20px;
+                  margin-left: 10%;
+                  margin-right: 10%">
+
+        <form action="/action_page.php">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name">
+          &nbsp; &nbsp; &nbsp;
+          <label for="start_date">Start Date:</label>
+          <input type="date" id="description_start_date" name="start_date">
+          &nbsp;
+          <label for="end_date">End Date:</label>
+          <input type="date" id="description_end_date" name="end_date">
+          &nbsp; &nbsp; &nbsp;
+          <input type="submit" value="Update Task">
+        </form>
+        <textarea name="description"
+                  style="width: 100%;
+                         height: 200px">
+          Description
+        </textarea>
+
+      </div>
+    </div>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+  </section>
+
+
+  <script>
+    var tasks = [
+        {
+            id: 'Task 1',
+            name: 'Redesign website',
+            start: '2020-03-01',
+            end: '2020-03-12'
+        }
+    ]
+    var gantt = new Gantt("#gantt", tasks, {
+        view_modes: ['Day', 'Week', 'Month'],
+        view_mode: 'Day'
+    });
+  </script>
+
+</body>
+</html>

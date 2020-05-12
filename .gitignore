@@ -1,0 +1,10 @@
+instance/
+
+.env
+.venv
+env/
+venv/
+ENV/
+
+__pycache__
+.vscode/
