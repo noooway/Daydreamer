@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="base.css">
 
     <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"
+      integrity="sha256-C66CaAImteEKZPYvgng9j10J/45e9sAuZyfPYCwp4gE="
+      crossorigin="anonymous">
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"
+      integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8="
+      crossorigin="anonymous">
+    </script>
+    <script
       src="https://cdnjs.cloudflare.com/ajax/libs/frappe-gantt/0.3.0/frappe-gantt.min.js"
       integrity="sha256-YA6lue6HOUrphxAbwHtvGF84CE76RcfTyBYvlEU3u6U="
       crossorigin="anonymous">
@@ -26,8 +36,15 @@
       <div class="gantt-container">
         <svg id="gantt"></svg>
       </div>
-      <div class="new_task">
-        <button>New Task</button>
+
+      <div class="controls">
+        <select onchange="change_gantt_view(this.value);">
+          <option value="Day">Day</option>
+          <option selected value="Week">Week</option>
+          <option value="Month">Month</option>
+        </select>
+
+        <button onclick="add_task();">New Task</button>
       </div>
     </div>
 
@@ -49,7 +66,8 @@
       </div>
       <hr>
       <div class="task_description">
-        <textarea> Description </textarea>
+        <!-- todo: use css to fill to bottom -->
+        <textarea rows="15"> Description </textarea>
       </div>
     </div>
   </section>
@@ -62,11 +80,35 @@
             start: '2020-03-01',
             end: '2020-03-12'
         }
-    ]
+    ];
+
     var gantt = new Gantt("#gantt", tasks, {
         view_modes: ['Day', 'Week', 'Month'],
-        view_mode: 'Day'
+        view_mode: 'Week'
     });
+
+    function change_gantt_view(view_mode) {
+        gantt.change_view_mode(view_mode);
+    }
+
+    function add_task() {
+        var tasks = gantt.tasks;
+
+        //todo: use momentjs
+        var today = new Date();
+        var end_date = new Date();
+        end_date.setDate(today.getDate() + 7);
+
+        var new_task = {
+            id: '1',
+            name: 'Redesign website',
+            start: today,
+            end: end_date
+        };
+
+        tasks.push(new_task);
+        gantt.refresh(tasks);
+    }
   </script>
 
 </body>

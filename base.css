@@ -13,10 +13,10 @@
     border-color: lightgrey;
 }
 
-.new_task {
+.controls {
     display: flex;
     flex-flow: row;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .task_properties {

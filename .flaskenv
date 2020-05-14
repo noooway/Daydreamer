@@ -1,2 +1,0 @@
-FLASK_APP=dreamcatcher
-FLASK_ENV=development
