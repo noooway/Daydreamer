@@ -22,33 +22,36 @@
 
   <section class="main">
 
-    <div class="gantt-container">
-      <svg id="gantt"></svg>
+    <div class="chart_and_controls">
+      <div class="gantt-container">
+        <svg id="gantt"></svg>
+      </div>
+      <div class="new_task">
+        <button>New Task</button>
+      </div>
     </div>
 
-    <div>
-      <button>New Task</button>
+    <div class="task_properties">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="description_start_date" name="start_date">
+      </div>
+      <div>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="description_end_date" name="end_date">
+      </div>
+      <div>
+        <input type="submit" value="Update Task">
+      </div>
+      <hr>
+      <div class="task_description">
+        <textarea> Description </textarea>
+      </div>
     </div>
-
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name">
-      &nbsp; &nbsp; &nbsp;
-      <label for="start_date">Start Date:</label>
-      <input type="date" id="description_start_date" name="start_date">
-      &nbsp;
-      <label for="end_date">End Date:</label>
-      <input type="date" id="description_end_date" name="end_date">
-      &nbsp; &nbsp; &nbsp;
-      <input type="submit" value="Update Task">
-    </div>
-
-    <div>
-      <textarea id="description">
-        Description
-      </textarea>
-    </div>
-
   </section>
 
   <script>

@@ -1,13 +1,45 @@
-p {
-  font-size: 40px
+.chart_and_controls {
+    display: flex;
+    flex-flow: column;
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
+.gantt-container {
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 1px;
+    border-color: lightgrey;
+}
 
-style="overflow: scroll;
-                  margin-top: 50px;
-                  margin-left: 10%;
-                  margin-right: 10%"
+.new_task {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+}
 
-style="margin-top: 20px;
-                  margin-left: 10%;
-                  margin-right: 10%"
+.task_properties {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.task_properties hr {
+    width: 100%;
+    flex-basis: 100%;
+    height: 0;
+    margin: 0;
+    border: 0;
+}
+
+.task_description {
+    width: 100%;
+}
+
+.task_description textarea {
+    width: 100%;
+}
