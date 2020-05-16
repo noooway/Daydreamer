@@ -44,7 +44,7 @@
           <option value="Month">Months</option>
         </select>
 
-        <button onclick="add_task();">New Task</button>
+        <button onclick="add_task()">New Task</button>
       </div>
     </div>
 
@@ -52,20 +52,20 @@
       <div>
         <label for="task_name">Name:</label>
         <input type="text" id="task_name" name="name"
-               onchange="update_task(this);">
+               onchange="update_task(this)">
       </div>
       <div>
         <label for="start_date">Start Date:</label>
         <input type="date" id="description_start_date" name="start_date"
-               onchange="update_task(this);">
+               onchange="update_task(this)">
       </div>
       <div>
         <label for="end_date">End Date:</label>
         <input type="date" id="description_end_date" name="end_date"
-               onchange="update_task(this);">
+               onchange="update_task(this)">
       </div>
       <div>
-        <button>Delete Task</button>
+        <button onclick="delete_task()">Delete Task</button>
       </div>
       <hr>
       <div class="task_description">
@@ -150,6 +150,24 @@
             tasks[idx].description = input_obj.value;
         }
 
+        gantt.refresh(tasks);
+    }
+
+    function delete_task() {
+        if ( active_task_id == null ) return;
+
+        var tasks = gantt.tasks;
+        var idx = tasks.findIndex( x => {return x.id === active_task_id} );
+        if (idx > -1) {
+            tasks.splice(idx, 1);
+        }
+
+        document.getElementById("task_name").value = null;
+        document.getElementById("description_start_date").value = null;
+        document.getElementById("description_end_date").value = null;
+        document.getElementById("description").value = null;
+
+        active_task_id = null;
         gantt.refresh(tasks);
     }
 
