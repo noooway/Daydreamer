@@ -50,24 +50,30 @@
 
     <div class="task_properties">
       <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
+        <label for="task_name">Name:</label>
+        <input type="text" id="task_name" name="name"
+               onchange="update_task(this);">
       </div>
       <div>
         <label for="start_date">Start Date:</label>
-        <input type="date" id="description_start_date" name="start_date">
+        <input type="date" id="description_start_date" name="start_date"
+               onchange="update_task(this);">
       </div>
       <div>
         <label for="end_date">End Date:</label>
-        <input type="date" id="description_end_date" name="end_date">
+        <input type="date" id="description_end_date" name="end_date"
+               onchange="update_task(this);">
       </div>
       <div>
-        <input type="submit" value="Update Task">
+        <button>Delete Task</button>
       </div>
       <hr>
       <div class="task_description">
         <!-- todo: use css to fill to bottom -->
-        <textarea rows="15"> Description </textarea>
+        <textarea id="description" rows="15"
+                  onchange="update_task(this);">
+          Description
+        </textarea>
       </div>
     </div>
   </section>
@@ -78,22 +84,37 @@
             id: '1',
             name: 'Redesign website',
             start: moment().format("YYYY-MM-DD"), //todo: avoid casting date to string?
-            end: moment().add(10, 'days').format("YYYY-MM-DD")
+            end: moment().add(10, 'days').format("YYYY-MM-DD"),
+            description: "go to hell"
         }
     ];
 
-    function gantt_on_click(task) {
-        console.log(task);
-    }
+    var active_task_id = null;
 
     var gantt = new Gantt("#gantt", tasks, {
         view_modes: ['Day', 'Week', 'Month'],
         view_mode: 'Week',
-        on_click: gantt_on_click
+        on_click: gantt_on_click, // scope?
+        on_date_change: gantt_on_date_change // doesn't work?
     });
 
     function change_gantt_view(view_mode) {
         gantt.change_view_mode(view_mode);
+    }
+
+    function gantt_on_click(task) {
+        active_task_id = task.id;
+        document.getElementById("task_name").value = task.name;
+        document.getElementById("description_start_date").value = task.start;
+        document.getElementById("description_end_date").value = task.end;
+        document.getElementById("description").value = task.description;
+    }
+
+    function gantt_on_date_change(task, start, date) {
+        //todo: merge with gantt_on_click?
+        active_task_id = task.id;
+        document.getElementById("description_start_date").value = start;
+        document.getElementById("description_end_date").value = end;
     }
 
     function add_task() {
@@ -102,12 +123,36 @@
         var new_task = {
             name: 'New Task',
             start: moment().format("YYYY-MM-DD"),
-            end: moment().add(7, 'days').format("YYYY-MM-DD")
+            end: moment().add(7, 'days').format("YYYY-MM-DD"),
+            description: ''
         };
 
         tasks.push(new_task);
         gantt.refresh(tasks);
     }
+
+
+    function update_task(input_obj) {
+        if ( active_task_id == null ) return;
+
+        // todo: use gantt.get_task(id)?
+        var tasks = gantt.tasks;
+        var idx = tasks.findIndex( x => {return x.id === active_task_id} );
+
+        // todo: simplify; pass task field as arg?
+        if ( input_obj.id == "description_end_date" ){
+            tasks[idx].end = input_obj.value;
+        } else if ( input_obj.id == "description_start_date" ){
+            tasks[idx].start = input_obj.value;
+        } else if ( input_obj.id == "task_name" ){
+            tasks[idx].name = input_obj.value;
+        } else if ( input_obj.id == "description" ){
+            tasks[idx].description = input_obj.value;
+        }
+
+        gantt.refresh(tasks);
+    }
+
   </script>
 
 </body>
