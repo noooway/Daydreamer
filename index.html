@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Dreamcatcher</title>
+    <title>DayDreams</title>
     <link rel="stylesheet" href="base.css">
 
     <script
@@ -84,7 +84,31 @@
             name: 'Vacation',
             start: moment().format("YYYY-MM-DD"), //todo: avoid casting date to string?
             end: moment().add(30, 'days').format("YYYY-MM-DD"),
-            description: "go to hell"
+            description: "Unwind a bit"
+        },
+        {
+            name: 'Fly to the Moon',
+            start: moment().format("YYYY-MM-DD"),
+            end: moment().add(7, 'days').format("YYYY-MM-DD"),
+            description: ""
+        },
+        {
+            name: 'Visit Mars',
+            start: moment().add(7, 'days').format("YYYY-MM-DD"),
+            end: moment().add(15, 'days').format("YYYY-MM-DD"),
+            description: ""
+        },
+        {
+            name: 'Go to Alpha Centauri',
+            start: moment().add(15, 'days').format("YYYY-MM-DD"),
+            end: moment().add(25, 'days').format("YYYY-MM-DD"),
+            description: ""
+        },
+        {
+            name: 'Get Back Home',
+            start: moment().add(25, 'days').format("YYYY-MM-DD"),
+            end: moment().add(30, 'days').format("YYYY-MM-DD"),
+            description: ""
         }
     ];
 
@@ -118,9 +142,12 @@
 
     function add_task() {
         var tasks = gantt.tasks;
+        var task_names = ['Go Snowboarding', 'Go Scuba Diving', 'Go Camping',
+                          'BBQ', 'Meet with Friends',
+                          'Learn to Draw', 'Write a Book'];
 
         var new_task = {
-            name: 'Visit New Place',
+            name: task_names[Math.floor(Math.random() * task_names.length)],
             start: moment().format("YYYY-MM-DD"),
             end: moment().add(7, 'days').format("YYYY-MM-DD"),
             description: ''
