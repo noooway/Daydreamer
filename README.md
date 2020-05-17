@@ -1,8 +1,8 @@
-### DayDreams
-Put ideas on timeline. [Start now!](http://noooway.github.io/DayDreams/index.html)
+### Daydreamer
+Put ideas on timeline. [Start now!](http://noooway.github.io/Daydreamer/index.html)
 
 <p align="center">
-    <a href="http://noooway.github.io/DayDreams/index.html">
+    <a href="http://noooway.github.io/Daydreamer/index.html">
         <img src="https://i.ibb.co/rb8JCNG/daydreams-v01.png" width="600"/>
     </a>
 </p>
