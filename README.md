@@ -1,4 +1,4 @@
-## DayDreams
+### DayDreams
 Put ideas on timeline. [Start now!](http://noooway.github.io/DayDreams/index.html)
 
 <p align="center">
@@ -6,6 +6,4 @@ Put ideas on timeline. [Start now!](http://noooway.github.io/DayDreams/index.htm
 </p>
 
 
-### Acknowledgements
-
-Gantt chart functionality is provided by awesome [Frappe Gantt](https://github.com/frappe/gantt).
+* Gantt chart functionality is provided by awesome [Frappe Gantt](https://github.com/frappe/gantt).
