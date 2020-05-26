@@ -48,7 +48,7 @@
           <button id="down" disabled onclick="move_task_down()">Down</button>
         </div>
         <div>
-          <button id="fold" disabled onclick="fold_unroll()">Unroll</button>
+          <button id="fold" disabled onclick="fold_unroll()">Fold/Unfold</button>
           <button id="sub" disabled onclick="add_subtask()">Sub</button>
         </div>
         <div>
@@ -170,7 +170,6 @@
         };
 
         tasks.splice(idx + 1, 0, new_task);
-
         store_tasks(tasks);
         gantt.refresh(tasks);
     }
@@ -246,6 +245,7 @@
         document.getElementById("task_name").value = null;
         document.getElementById("description_start_date").value = null;
         document.getElementById("description_end_date").value = null;
+        document.getElementById("description_days_length").value = null;
         document.getElementById("description").value = null;
         document.getElementById("up").disabled = true;
         document.getElementById("down").disabled = true;
@@ -263,6 +263,7 @@
         document.getElementById("task_name").value = null;
         document.getElementById("description_start_date").value = null;
         document.getElementById("description_end_date").value = null;
+        document.getElementById("description_days_length").value = null;
         document.getElementById("description").value = null;
         document.getElementById("up").disabled = true;
         document.getElementById("down").disabled = true;
