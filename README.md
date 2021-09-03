@@ -8,3 +8,7 @@ Put your ideas on a timeline. [Start now!](http://noooway.github.io/Daydreamer/i
 </p>
 
 Gantt chart functionality is provided by awesome [Frappe Gantt](https://github.com/frappe/gantt).
+
+### Notice
+This repository is out of date.  
+The most recent version of the project is available at https://github.com/abrdk/Daydreamer .
